@@ -11,6 +11,7 @@ class PokemonForm extends Component {
     }
 
     handleInput = (e) => {
+        this.props.resetNotification()
         this.setState({[e.target.name]: e.target.value})
     }
 
@@ -34,7 +35,7 @@ class PokemonForm extends Component {
                     <input className='input' type="text" name="title" placeholder='Enter a Name'
                            value={this.state.title} onChange={this.handleInput}
                            ref={this.props.titleRef} />
-                    <textarea className='input' name="body" placeholder='Describe your Pokemon Spell'
+                    <textarea className='input' name="body" placeholder='Describe your pokemon action'
                               value={this.state.body} onChange={this.handleInput}></textarea>
                 </form>
             </div>

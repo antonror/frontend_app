@@ -12,15 +12,15 @@
   height: 150px;
   width: 150px;
   margin: 10px;
-  background: lightgreen;
+  background: lightyellow;
   float: left;
   font-size: 11px;
-  text-align: center;
+  text-align: left;
 }
 
 .newPokemonButton {
-  background: lightgreen;
-  color: black;
+  background: darkblue;
+  color: white;
   border: none;
   font-size: 18px;
   cursor: pointer;
@@ -46,4 +46,17 @@ textarea {
   resize: none;
   height: 90px;
   font-size: 11px;
+}
+
+.deleteButton {
+  visibility: hidden;
+  float: right;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  color: red;
+}
+
+.tile:hover .deleteButton {
+  visibility: visible;
 }
