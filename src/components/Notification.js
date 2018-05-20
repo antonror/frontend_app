@@ -1,7 +1,7 @@
 import React from 'react'
 import Transition from 'react-transition-group/Transition'
 
-const duration = 1000
+const duration = 500
 
 const defaultStyle = {
     transition: `background ${duration}ms ease-in-out, opacity ${duration}ms ease-in-out`,
@@ -11,7 +11,7 @@ const defaultStyle = {
 
 const transitionStyles = {
     entering: { opacity: 1, background: 'lightgreen' },
-    entered:  { opacity: 1 },
+    entered:  { opacity: 0 },
 }
 
 const Notification = ({ in: inProp, notification }) =>

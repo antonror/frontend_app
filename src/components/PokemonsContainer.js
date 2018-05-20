@@ -9,6 +9,7 @@ class PokemonsContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            term: '',
             pokemons: [],
             editingPokemonId: null,
             notification: '',
@@ -17,11 +18,20 @@ class PokemonsContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/v1/pokemons.json')
+        axios.get('http://localhost:3001/search?q=' + this.state.term)
             .then(response => {
                 this.setState({pokemons: response.data})
             })
             .catch(error => console.log(error))
+    }
+
+    getAutoCompleteResults(e){
+        this.setState({
+            term: e.target.value
+        }, () => {
+            axios.get('http://localhost:3001/search?q=' + this.state.term)
+                .then(response => this.setState({pokemons: response.data }))
+        })
     }
 
     addNewPokemon = () => {
@@ -55,28 +65,37 @@ class PokemonsContainer extends Component {
         this.setState({editingPokemonId: id}, () => { this.title.focus() })
     }
 
+
     render() {
+        let autoCompleteList = this.state.pokemons.map((pokemon) => {
+            if(this.state.editingPokemonId === pokemon.id) {
+                return(<PokemonForm pokemon={pokemon}
+                                    key={pokemon.id}
+                                    updatePokemon={this.updatePokemon}
+                                    titleRef= {input => this.title = input}
+                                    resetNotification={this.resetNotification} />)
+            } else {
+                return (<Pokemon pokemon={pokemon}
+                                 key={pokemon.id}
+                                 onClick={this.enableEditing}
+                                 onDelete={this.deletePokemon} />)
+            }
+        })
+
         return (
             <div className="wrap">
-                <div className="component-header"><h2>Pokedex Area</h2></div>
+                <button className="newPokemonButton" onClick={this.addNewPokemon} >
+                    Add Pokemon
+                </button>
+                <Notification in={this.state.transitionIn} notification= {this.state.notification} />
+                <input className="poke-search" ref="input" value={ this.state.term }
+                       onChange={ this.getAutoCompleteResults.bind(this) }
+                       type='text' placeholder='Search...' />
                 <div>
-                    <button className="newPokemonButton" onClick={this.addNewPokemon} >
-                        Add Pokemon
-                    </button>
-                    <Notification in={this.state.transitionIn} notification= {this.state.notification} />
+                    { autoCompleteList }
                 </div>
-                {this.state.pokemons.map((pokemon) => {
-                    if(this.state.editingPokemonId === pokemon.id) {
-                        return(<PokemonForm pokemon={pokemon} key={pokemon.id} updatePokemon={this.updatePokemon}
-                                         titleRef= {input => this.title = input}
-                                         resetNotification={this.resetNotification} />)
-                    } else {
-                        return (<Pokemon pokemon={pokemon} key={pokemon.id} onClick={this.enableEditing}
-                                      onDelete={this.deletePokemon} />)
-                    }
-                })}
             </div>
-        );
+        )
     }
 }
 

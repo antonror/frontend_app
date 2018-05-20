@@ -77,8 +77,16 @@ textarea {
   background:lightblue;
 }
 
-.poke-dex{
+.poke-dex {
   float: right;
   background:pink;
   width: 40%;
+}
+
+.poke-search {
+  font-size: 14px;
+  padding:10px;
+  float: left;
+  margin-left: 10px;
+  width: 140px;
 }
