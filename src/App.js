@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import PokemonsContainer from './components/PokemonsContainer'
+import PokemonLineup from './components/PokemonLineup'
 
 class App extends Component {
     render() {
@@ -10,13 +11,16 @@ class App extends Component {
                     <h1>Welcome to Pokemon Dashboard</h1>
                 </div>
 
-                <div className="poke-lineup">
-                    <div className="component-header"><h2>Pokemon Lineup</h2></div>
-                </div>
+                <div className="main-wrap">
+                    <div className="poke-lineup">
+                        <div className="component-header"><h2>Pokemon Lineup</h2></div>
+                        <PokemonLineup />
+                    </div>
 
-                <div className="poke-dex">
-                    <div className="component-header"><h2>Pokedex Area</h2></div>
-                    <PokemonsContainer />
+                    <div className="poke-dex">
+                        <div className="component-header"><h2>Pokedex Area</h2></div>
+                        <PokemonsContainer />
+                    </div>
                 </div>
             </div>
         );

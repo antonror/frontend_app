@@ -66,9 +66,12 @@ textarea {
   visibility: visible;
 }
 
-.wrap {
+
+.main-wrap > div { min-height: 800px; }
+
+.main-wrap {
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .poke-lineup {

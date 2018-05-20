@@ -83,7 +83,7 @@ class PokemonsContainer extends Component {
         })
 
         return (
-            <div className="wrap">
+            <div>
                 <button className="newPokemonButton" onClick={this.addNewPokemon} >
                     Add Pokemon
                 </button>
