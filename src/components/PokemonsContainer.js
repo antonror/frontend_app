@@ -4,6 +4,7 @@ import Pokemon from './Pokemon'
 import PokemonForm from './PokemonForm'
 import update from 'immutability-helper'
 import Notification from './Notification'
+import {loadPokemons} from '../actions/pokemonActions';
 
 class PokemonsContainer extends Component {
     constructor(props) {
@@ -41,6 +42,8 @@ class PokemonsContainer extends Component {
                 this.setState({pokemons: pokemons, editingPokemonId: response.data.id})
             })
             .catch(error => console.log(error))
+
+        loadPokemons()
     }
 
     updatePokemon = (pokemon) => {

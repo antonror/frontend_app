@@ -1,38 +1,28 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React from 'react';
+import {connect} from 'react-redux';
 
-class PokemonLineup extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            pokemons: [],
-        }
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:3001/api/v1/pokemons')
-            .then(response => {
-                this.setState({pokemons: response.data})
-            })
-            .catch(error => console.log(error))
-    }
-
+class PokemonLineup extends React.Component {
     render() {
-        {
-            return (
-                <div>
-                    {this.state.pokemons.map((pokemon) => {
-                        return(
-                            <div className="tile" key={pokemon.id} >
-                                <h4>{pokemon.title}</h4>
-                                <p>{pokemon.body}</p>
-                            </div>
-                        )
-                    })}
-                </div>
-            )
-        }
+        return (
+            <div>
+                {this.props.pokemons.map((pokemon) => {
+                    return(
+                        <div className="tile" key={pokemon.id} >
+                            <h4>{pokemon.title}</h4>
+                            <p>{pokemon.body}</p>
+                        </div>
+                    )
+                })}
+            </div>
+        )
     }
 }
 
-export default PokemonLineup
+
+function mapStateToProps(state, ownProps) {
+    return {
+        pokemons: state.pokemons
+    };
+}
+
+export default connect(mapStateToProps)(PokemonLineup)
