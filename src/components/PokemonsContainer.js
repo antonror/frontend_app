@@ -57,7 +57,8 @@ class PokemonsContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="wrap">
+                <div className="component-header"><h2>Pokedex Area</h2></div>
                 <div>
                     <button className="newPokemonButton" onClick={this.addNewPokemon} >
                         Add Pokemon

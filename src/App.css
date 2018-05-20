@@ -1,6 +1,6 @@
 .App-header {
   text-align: center;
-  height: 150px;
+  height: 80px;
   padding: 20px;
 }
 
@@ -16,6 +16,11 @@
   float: left;
   font-size: 11px;
   text-align: left;
+  padding-left: 10px;
+}
+
+.component-header {
+  text-align: center;
 }
 
 .newPokemonButton {
@@ -59,4 +64,21 @@ textarea {
 
 .tile:hover .deleteButton {
   visibility: visible;
+}
+
+.wrap {
+  width: 100%;
+  overflow: auto;
+}
+
+.poke-lineup {
+  float:left;
+  width: 60%;
+  background:lightblue;
+}
+
+.poke-dex{
+  float: right;
+  background:pink;
+  width: 40%;
 }

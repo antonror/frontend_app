@@ -7,9 +7,14 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="App-header">
-                    <h1>Pokemon Lineup</h1>
+                    <h1>Welcome to Pokemon Dashboard</h1>
                 </div>
-                <PokemonsContainer />
+                <div className="poke-lineup">
+                    <div className="component-header"><h2>Pokemon Lineup</h2></div>
+                </div>
+                <div className="poke-dex">
+                    <PokemonsContainer />
+                </div>
             </div>
         );
     }
